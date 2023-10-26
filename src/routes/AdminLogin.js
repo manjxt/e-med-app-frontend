@@ -1,24 +1,18 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useData } from "../hooks";
-import { user } from "../utils/api";
+import { admin } from "../utils/api";
 
-const LoginPage = () => {
+const AdminLogin = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const { handleUser } = useData();
 
-  const handleUserLogin = async () => {
+  const handleAdminLogin = async () => {
     try {
       const payload = { userName: username, email, password };
-      const response = await user.login(payload);
+      const response = await admin.login(payload);
       console.log(response);
-      handleUser(response);
-      navigate("/");
     } catch (error) {
-      console.log("User login error:", error);
+      console.log("Admin login error:", error);
     }
   };
 
@@ -32,8 +26,7 @@ const LoginPage = () => {
         height: "50vh",
       }}
     >
-      <h2>Login</h2>
-      <h1>Please Login to continue.</h1>
+      <h2>Admin Login</h2>
       <form
         style={{
           display: "flex",
@@ -49,7 +42,6 @@ const LoginPage = () => {
           style={{
             marginBottom: "10px",
             padding: "10px",
-            borderRadius: "5px",
           }}
         />
         <input
@@ -70,36 +62,22 @@ const LoginPage = () => {
           style={{
             marginBottom: "10px",
             padding: "10px",
-            borderRadius: "5px",
           }}
         />
         <button
           type="button"
-          onClick={handleUserLogin}
+          onClick={handleAdminLogin}
           style={{
-            padding: "10px 20px",
+            padding: "10px",
             backgroundColor: "lightblue",
             cursor: "pointer",
-            borderRadius: "5px",
-            marginBottom: "10px",
           }}
         >
           Login
         </button>
-        <div>
-          <Link
-            to="/AdminLogin"
-            style={{
-              padding: "10px 20px",
-              borderRadius: "5px",
-            }}
-          >
-            Admin Login
-          </Link>
-        </div>
       </form>
     </div>
   );
 };
 
-export default LoginPage;
+export default AdminLogin;

@@ -1,18 +1,24 @@
 import React, { useState } from "react";
+import { useData } from "../hooks";
 import { user } from "../utils/api";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { handleUser } = useData();
 
   const handleUserRegister = async () => {
     try {
-      const payload = { username, email, password };
+      const payload = { userName: username, email, password };
       const response = await user.register(payload);
       console.log(response); // Handle the response from the backend here
+      handleUser(response);
+      navigate("/");
     } catch (error) {
-      console.log("User register error:", error);
+      console.log("User register <erro></erro>r:", error);
     }
   };
 
@@ -23,10 +29,11 @@ const RegisterPage = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        height: "100vh",
+        height: "50vh",
       }}
     >
-      <h2>Register</h2>
+      <h2>SignUp</h2>
+      <h1>Please SignUp to continue.</h1>
       <form
         style={{
           display: "flex",

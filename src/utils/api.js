@@ -54,3 +54,13 @@ export const user = {
 export const medicines = {
   list: async () => await _get("/Medicines"),
 };
+
+export const cart = {
+  getCarts: async () => await _get("/Cart"),
+  createCart: async (payload) => await _post("/Cart", payload),
+  deleteCart: async (id) => await _delete(`/Cart/${id}`),
+  addItemToCart: async (cartId, payload) =>
+    await _post(`/Cart/${cartId}/items`, payload),
+  removeItemFromCart: async (cartId, itemId) =>
+    await _delete(`/Cart/${cartId}/items/${itemId}`),
+};
