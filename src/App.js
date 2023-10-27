@@ -13,6 +13,7 @@ import DeleteMedicine from "./routes/DeleteMedicine";
 import AddMedicine from "./routes/AddMedicine";
 import OrderConfirmed from "./routes/OrderConfirmed";
 import AddCategory from "./routes/AddCategory";
+import ViewUsers from "./routes/ViewUsers";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/admin/medicine/edit/:id" element={<EditMedicine />} />
             <Route path="/admin/medicine/add" element={<AddMedicine />} />
+            <Route path="/admin/users" element={<ViewUsers />} />
             <Route
               path="/admin/medicine/addCategory"
               element={<AddCategory />}

@@ -25,6 +25,14 @@ export default function AdminPanel() {
       <h2 style={{ marginTop: "30px" }}>Admin Panel</h2>
       <div className="my-2">
         <Button
+          onClick={() => navigate(`/admin/users`)}
+          variant="primary"
+          style={{ marginTop: "5px", marginBottom: "20px" }}
+        >
+          View Users
+        </Button>
+        <Button
+          className="mx-3"
           onClick={() => navigate(`/admin/medicine/addCategory`)}
           variant="primary"
           style={{ marginTop: "5px", marginBottom: "20px" }}

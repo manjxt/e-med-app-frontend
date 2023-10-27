@@ -47,6 +47,7 @@ const _put = async (endpoint, payload) => {
 
 export const admin = {
   login: async (payload) => await _post("/AdminLogin/Login", payload),
+  users: async () => await _get("api/Admin/Users"),
 };
 
 export const user = {
