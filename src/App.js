@@ -7,6 +7,9 @@ import Navbar from "./components/Navbar";
 import AdminLogin from "./routes/AdminLogin";
 import Cart from "./routes/Cart";
 import { DataProvider } from "./hooks";
+import AdminPanel from "./routes/AdminPanel";
+import EditMedicine from "./routes/EditMedicine";
+import DeleteMedicine from "./routes/DeleteMedicine";
 
 function App() {
   return (
@@ -20,6 +23,12 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/adminlogin" element={<AdminLogin />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/admin/medicine/edit/:id" element={<EditMedicine />} />
+            <Route
+              path="/admin/medicine/delete/:id"
+              element={<DeleteMedicine />}
+            />
           </Routes>
           {/* <Home /> */}
         </div>

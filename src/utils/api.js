@@ -3,7 +3,6 @@ import { API_URL } from "./config";
 
 const instance = axios.create({
   baseURL: API_URL,
-  timeout: 1000,
 });
 
 const _get = async (endpoint) => {
@@ -53,6 +52,9 @@ export const user = {
 
 export const medicines = {
   list: async () => await _get("/Medicines"),
+  single: async (id) => await _get(`/Medicines/${id}`),
+  edit: async (id, payload) => await _put(`/Medicines/${id}`, payload),
+  deleteSingle: async (id) => await _delete(`/Medicines/${id}`),
 };
 
 export const cart = {
