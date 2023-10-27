@@ -19,6 +19,14 @@ export default function AdminPanel() {
   return (
     <div style={{ marginRight: "5rem", marginLeft: "5rem" }}>
       <h2>Admin Panel</h2>
+      <div className="my-2">
+        <Button
+          onClick={() => navigate(`/admin/medicine/add`)}
+          variant="primary"
+        >
+          Add Medicine
+        </Button>
+      </div>
       <Table striped bordered hover>
         <thead>
           <tr>

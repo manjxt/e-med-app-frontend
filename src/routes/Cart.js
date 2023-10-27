@@ -36,6 +36,7 @@ const Cart = () => {
   return (
     <div style={{ marginRight: "5rem", marginLeft: "5rem" }}>
       <h2>Cart</h2>
+
       <Table striped bordered hover>
         <thead>
           <tr>

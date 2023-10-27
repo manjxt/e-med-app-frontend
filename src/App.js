@@ -10,6 +10,7 @@ import { DataProvider } from "./hooks";
 import AdminPanel from "./routes/AdminPanel";
 import EditMedicine from "./routes/EditMedicine";
 import DeleteMedicine from "./routes/DeleteMedicine";
+import AddMedicine from "./routes/AddMedicine";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/admin/medicine/edit/:id" element={<EditMedicine />} />
+            <Route path="/admin/medicine/add" element={<AddMedicine />} />
             <Route
               path="/admin/medicine/delete/:id"
               element={<DeleteMedicine />}

@@ -32,13 +32,17 @@ const LoginPage = () => {
         height: "50vh",
       }}
     >
+      <p></p>
+      <p></p>
       <h2>Login</h2>
-      <h1>Please Login to continue.</h1>
+      <p></p>
+      <h5>Please Login to continue.</h5>
       <form
         style={{
           display: "flex",
           flexDirection: "column",
           width: "300px",
+          margin: "20px",
         }}
       >
         <input
@@ -49,7 +53,6 @@ const LoginPage = () => {
           style={{
             marginBottom: "10px",
             padding: "10px",
-            borderRadius: "5px",
           }}
         />
         <input
@@ -70,7 +73,6 @@ const LoginPage = () => {
           style={{
             marginBottom: "10px",
             padding: "10px",
-            borderRadius: "5px",
           }}
         />
         <button

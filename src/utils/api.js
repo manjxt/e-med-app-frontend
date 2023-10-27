@@ -56,6 +56,7 @@ export const user = {
 
 export const medicines = {
   list: async () => await _get("/Medicines"),
+  add: async (payload) => await _post("/Medicines", payload),
   single: async (id) => await _get(`/Medicines/${id}`),
   edit: async (id, payload) => await _put(`/Medicines/${id}`, payload),
   deleteSingle: async (id) => await _delete(`/Medicines/${id}`),

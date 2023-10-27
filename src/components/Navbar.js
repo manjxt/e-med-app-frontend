@@ -54,7 +54,9 @@ const Navbar = () => {
               </Link>
             )
           ) : (
-            <></>
+            <Link to="/admin" style={linkStyle}>
+              Admin Panel
+            </Link>
           )}
           <Link
             aria-disabled="true"
