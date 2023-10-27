@@ -11,6 +11,7 @@ const _get = async (endpoint) => {
     return response.data;
   } catch (error) {
     console.log("axios get error:", error);
+    throw new Error();
   }
 };
 
@@ -20,6 +21,7 @@ const _post = async (endpoint, payload) => {
     return response.data;
   } catch (error) {
     console.log("axios post error:", error);
+    throw new Error();
   }
 };
 
@@ -29,6 +31,7 @@ const _delete = async (endpoint) => {
     return response.data;
   } catch (error) {
     console.log("axios delete error:", error);
+    throw new Error();
   }
 };
 
@@ -38,6 +41,7 @@ const _put = async (endpoint, payload) => {
     return response.data;
   } catch (error) {
     console.log("axios put error:", error);
+    throw new Error();
   }
 };
 

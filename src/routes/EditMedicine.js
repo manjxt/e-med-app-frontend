@@ -31,7 +31,7 @@ export default function EditMedicine() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await medicines.edit(id, medicine);
-    alert("Edited");
+    alert("Edited successfully.");
     navigate("/admin");
   };
 

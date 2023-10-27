@@ -35,9 +35,11 @@ const Navbar = () => {
       </div>
       {user ? (
         <div>
-          <Link to="/cart" style={linkStyle}>
-            Cart
-          </Link>
+          {user.userName !== "admin" && (
+            <Link to="/cart" style={linkStyle}>
+              Cart
+            </Link>
+          )}
           <Link
             aria-disabled="true"
             style={{ ...linkStyle, fontWeight: "bold" }}

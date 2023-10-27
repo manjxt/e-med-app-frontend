@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { admin } from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import { useData } from "../hooks";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { handleUser } = useData();
 
   const handleAdminLogin = async () => {
     try {
       const payload = { userName: username, email, password };
       const response = await admin.login(payload);
       console.log(response);
+      handleUser(response);
       navigate("/admin");
     } catch (error) {
       console.log("Admin login error:", error);
