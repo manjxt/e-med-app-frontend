@@ -24,7 +24,12 @@ const brandStyle = {
 };
 
 const Navbar = () => {
-  const { user } = useData();
+  const { user, cart } = useData();
+
+  let quantity = 0;
+  cart.forEach((item) => {
+    quantity += item.quantity;
+  });
 
   return (
     <div style={navbarStyle}>
@@ -35,10 +40,21 @@ const Navbar = () => {
       </div>
       {user ? (
         <div>
-          {user.userName !== "admin" && (
-            <Link to="/cart" style={linkStyle}>
-              Cart
-            </Link>
+          {user.userName !== "admin" ? (
+            cart && cart.length > 0 ? (
+              <Link to="/cart" style={linkStyle} className="position-relative">
+                Cart
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {quantity.toString()}
+                </span>
+              </Link>
+            ) : (
+              <Link to="/cart" style={linkStyle}>
+                Cart
+              </Link>
+            )
+          ) : (
+            <></>
           )}
           <Link
             aria-disabled="true"
