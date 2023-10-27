@@ -11,6 +11,8 @@ import AdminPanel from "./routes/AdminPanel";
 import EditMedicine from "./routes/EditMedicine";
 import DeleteMedicine from "./routes/DeleteMedicine";
 import AddMedicine from "./routes/AddMedicine";
+import OrderConfirmed from "./routes/OrderConfirmed";
+import AddCategory from "./routes/AddCategory";
 
 function App() {
   return (
@@ -24,9 +26,14 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/adminlogin" element={<AdminLogin />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/orderconfirmed" element={<OrderConfirmed />} />
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/admin/medicine/edit/:id" element={<EditMedicine />} />
             <Route path="/admin/medicine/add" element={<AddMedicine />} />
+            <Route
+              path="/admin/medicine/addCategory"
+              element={<AddCategory />}
+            />
             <Route
               path="/admin/medicine/delete/:id"
               element={<DeleteMedicine />}

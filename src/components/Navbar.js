@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import LoginPage from "../routes/Login";
 import RegisterPage from "../routes/Register";
 import { useData } from "../hooks";
+import { RiShoppingCartLine } from "react-icons/ri";
+import { Button } from "react-bootstrap";
 
 const navbarStyle = {
   display: "flex",
@@ -10,7 +12,6 @@ const navbarStyle = {
   alignItems: "center",
   background: "#f2f2f2",
   padding: "20px 20px",
-  marginBottom: "30px",
 };
 
 const linkStyle = {
@@ -23,8 +24,10 @@ const brandStyle = {
   fontWeight: "bold", // Added this line to make the text bold
 };
 
+const padStyle = {};
+
 const Navbar = () => {
-  const { user, cart } = useData();
+  const { user, cart, handleUser } = useData();
 
   let quantity = 0;
   cart.forEach((item) => {
@@ -35,35 +38,52 @@ const Navbar = () => {
     <div style={navbarStyle}>
       <div>
         <Link to="/" style={{ ...linkStyle, ...brandStyle }}>
-          E-Med
+          Medify
         </Link>
       </div>
       {user ? (
         <div>
+          <Link aria-disabled="true" style={{ ...linkStyle }}>
+            Welcome, {user.userName}!
+          </Link>
           {user.userName !== "admin" ? (
             cart && cart.length > 0 ? (
-              <Link to="/cart" style={linkStyle} className="position-relative">
-                Cart
+              <Link
+                to="/cart"
+                style={{ ...linkStyle, paddingRight: "10px" }}
+                className="position-relative"
+              >
+                <RiShoppingCartLine />
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {quantity.toString()}
                 </span>
               </Link>
             ) : (
               <Link to="/cart" style={linkStyle}>
-                Cart
+                <RiShoppingCartLine />
               </Link>
             )
           ) : (
-            <Link to="/admin" style={linkStyle}>
+            <Link to="/admin" style={{ linkStyle, color: "green" }}>
               Admin Panel
             </Link>
           )}
-          <Link
-            aria-disabled="true"
-            style={{ ...linkStyle, fontWeight: "bold" }}
+
+          <button
+            className="btn btn-link"
+            onClick={() => {
+              handleUser(null);
+              alert("Logged out!");
+            }}
+            style={{
+              ...linkStyle,
+              color: "red",
+              paddingLeft: "10px",
+              marginBottom: "5px",
+            }}
           >
-            {user.userName}
-          </Link>
+            Logout
+          </button>
         </div>
       ) : (
         <div>

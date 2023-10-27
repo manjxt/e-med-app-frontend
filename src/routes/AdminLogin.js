@@ -24,60 +24,37 @@ const AdminLogin = () => {
 
   return (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "50vh",
-      }}
+      className="d-flex flex-column align-items-center justify-content-center"
+      style={{ height: "50vh" }}
     >
       <h2>Admin Login</h2>
-      <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "300px",
-        }}
-      >
+      <p></p>
+      <form className="d-flex flex-column w-50">
         <input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          style={{
-            marginBottom: "10px",
-            padding: "10px",
-          }}
+          className="form-control mb-3"
         />
         <input
           type="text"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{
-            marginBottom: "10px",
-            padding: "10px",
-          }}
+          className="form-control mb-3"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{
-            marginBottom: "10px",
-            padding: "10px",
-          }}
+          className="form-control mb-3"
         />
         <button
           type="button"
           onClick={handleAdminLogin}
-          style={{
-            padding: "10px",
-            backgroundColor: "lightblue",
-            cursor: "pointer",
-          }}
+          className="btn btn-primary"
         >
           Login
         </button>

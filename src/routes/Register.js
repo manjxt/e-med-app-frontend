@@ -18,67 +18,44 @@ const RegisterPage = () => {
       handleUser(response);
       navigate("/");
     } catch (error) {
-      console.log("User register <erro></erro>r:", error);
+      console.log("User register error:", error);
     }
   };
 
   return (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "50vh",
-      }}
+      className="d-flex flex-column align-items-center justify-content-center"
+      style={{ height: "50vh" }}
     >
       <h2>SignUp</h2>
-      <h1>Please SignUp to continue.</h1>
-      <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "300px",
-        }}
-      >
+      <h6>Please enter credentials below.</h6>
+      <p></p>
+      <form className="d-flex flex-column w-50">
         <input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          style={{
-            marginBottom: "10px",
-            padding: "10px",
-          }}
+          className="form-control mb-3"
         />
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{
-            marginBottom: "10px",
-            padding: "10px",
-          }}
+          className="form-control mb-3"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{
-            marginBottom: "10px",
-            padding: "10px",
-          }}
+          className="form-control mb-3"
         />
         <button
           type="button"
           onClick={handleUserRegister}
-          style={{
-            padding: "10px",
-            backgroundColor: "lightblue",
-            cursor: "pointer",
-          }}
+          className="btn btn-primary"
         >
           Register
         </button>

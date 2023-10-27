@@ -27,10 +27,10 @@ export default function DeleteMedicine() {
 
   return (
     <div className="container mt-5">
-      <h2>Delete Medicine</h2>
+      <h2>Disable Medicine</h2>
       {medicine && (
         <div>
-          <p>Are you sure you want to delete this medicine?</p>
+          <p>Are you sure you want to disable this medicine?</p>
           <p>
             <strong>Name: </strong> {medicine.name}
           </p>
@@ -41,7 +41,7 @@ export default function DeleteMedicine() {
             <strong>Price: </strong> {medicine.price}
           </p>
           <button className="btn btn-danger me-3" onClick={handleDelete}>
-            Confirm Delete
+            Confirm Disable
           </button>
           <button className="btn btn-secondary" onClick={handleCancel}>
             Cancel

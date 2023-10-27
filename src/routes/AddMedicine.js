@@ -27,7 +27,7 @@ export default function AddMedicine() {
 
   return (
     <div className="container mt-5">
-      <h2>Edit Medicine</h2>
+      <h2>Add Medicine</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label">Image Url:</label>

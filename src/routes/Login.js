@@ -24,81 +24,45 @@ const LoginPage = () => {
 
   return (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "50vh",
-      }}
+      className="d-flex flex-column align-items-center justify-content-center"
+      style={{ height: "50vh" }}
     >
       <p></p>
+      <h2 style={{ marginTop: "100px" }}>Login</h2>
+      <h6>Please Login to continue.</h6>
       <p></p>
-      <h2>Login</h2>
-      <p></p>
-      <h5>Please Login to continue.</h5>
-      <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "300px",
-          margin: "20px",
-        }}
-      >
+      <form className="d-flex flex-column w-50">
         <input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          style={{
-            marginBottom: "10px",
-            padding: "10px",
-          }}
+          className="form-control mb-3"
         />
         <input
           type="text"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{
-            marginBottom: "10px",
-            padding: "10px",
-          }}
+          className="form-control mb-3"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{
-            marginBottom: "10px",
-            padding: "10px",
-          }}
+          className="form-control mb-3"
         />
         <button
           type="button"
           onClick={handleUserLogin}
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "lightblue",
-            cursor: "pointer",
-            borderRadius: "5px",
-            marginBottom: "10px",
-          }}
+          className="btn btn-primary mb-3"
         >
           Login
         </button>
-        <div>
-          <Link
-            to="/AdminLogin"
-            style={{
-              padding: "10px 20px",
-              borderRadius: "5px",
-            }}
-          >
-            Admin Login
-          </Link>
-        </div>
+        <Link to="/AdminLogin" className="btn btn-secondary mb-3">
+          Admin Login
+        </Link>
       </form>
     </div>
   );

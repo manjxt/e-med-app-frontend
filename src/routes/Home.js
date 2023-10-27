@@ -32,7 +32,6 @@ export default function Home() {
     .sort((a, b) => (sortBy === "name" ? a.name.localeCompare(b.name) : 0));
 
   const addToCart = (item) => {
-    // cart.addItemToCart(cartId, item);
     const existingItem = cart.find((cartItem) => cartItem.id === item.id);
     if (existingItem) {
       setCart(
@@ -45,8 +44,6 @@ export default function Home() {
     } else {
       setCart([...cart, { ...item, quantity: 1 }]);
     }
-
-    console.log(`Item added to cart: ${item.name}`);
   };
 
   const renderItem = (item) => {
@@ -55,93 +52,83 @@ export default function Home() {
     return (
       <div
         key={item.id}
+        className="card m-3"
         style={{
-          border: "1px solid #eaeaea",
-          borderRadius: "5px",
-          width: "250px",
-          margin: "30px",
-          padding: "10px",
-          textAlign: "center",
+          width: "18rem",
           boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
         }}
       >
         <img
           src={item.imageUrl}
           alt={item.name}
-          style={{ width: "100px", height: "100px", objectFit: "contain" }}
+          className="card-img-top"
+          style={{
+            objectFit: "contain",
+            maxHeight: "220px",
+            //marginTop: "5px",
+          }}
         />
-        <h3>{item.name}</h3>
-        <p>Category: {item.description}</p>
-        <p>Price: {item.price}</p>
-        <p>Seller: {item.seller}</p>
+        <div className="card-body">
+          <h5 className="card-title" style={{ padding: "5px" }}>
+            {item.name}
+          </h5>
+          <p className="card-text">Category: {item.description}</p>
+          <p className="card-text">Price: {item.price}</p>
+          <p className="card-text">Seller: {item.seller}</p>
+        </div>
         {user && (
-          <button
-            type="button"
-            onClick={() => addToCart(item)}
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "lightblue",
-              cursor: "pointer",
-              borderRadius: "5px",
-              marginBottom: "10px",
-            }}
-          >
-            {inCart ? `x${inCart.quantity} in Cart` : "Add to Cart"}
-          </button>
+          <div className="card-body">
+            <button
+              type="button"
+              onClick={() => addToCart(item)}
+              className="btn btn-primary mb-3"
+            >
+              {inCart ? `x${inCart.quantity} in Cart` : "Add to Cart"}
+            </button>
+          </div>
         )}
       </div>
     );
   };
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: "20px",
-        }}
-      >
+    <div style={{ backgroundColor: "#c8e6c9", minHeight: "100vh" }}>
+      {/* <div className="text-left">
+        <h2
+          style={{
+            fontFamily: "Arial, sans-serif",
+            fontSize: "36px",
+            padding: "30px",
+          }}
+        >
+          Welcome to Medify!
+        </h2>
+      </div> */}
+      <div className="d-flex justify-content-center mb-4">
         <input
           type="text"
           placeholder="Search medicines"
           value={searchTerm}
           onChange={handleSearch}
-          style={{
-            width: "300px",
-            padding: "10px",
-            marginRight: "20px",
-            borderRadius: "5px",
-            border: "1px solid #ccc",
-          }}
+          className="form-control w-25 me-3"
+          style={{ marginTop: "40px" }}
         />
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <span style={{ marginRight: "10px" }}>Sort By:</span>
+        <div
+          className="d-flex align-items-center"
+          style={{ marginTop: "40px" }}
+        >
+          <span className="me-2">SortBy:</span>
           <select
             onChange={(e) => handleSort(e.target.value)}
-            style={{
-              padding: "10px",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-              backgroundColor: "#f2f2f2", // Background color
-              color: "#333", // Text color
-            }}
+            className="form-select"
           >
-            <option value="" style={{ padding: "10px" }}>
-              None
-            </option>
-            <option value="name" style={{ padding: "10px" }}>
-              Name
-            </option>
-            <option value="category" style={{ padding: "10px" }}>
-              Category
-            </option>
+            <option value="">None</option>
+            <option value="name">Name</option>
+            <option value="category">Category</option>
           </select>
         </div>
       </div>
-      <div
-        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
-      >
+      <div className="d-flex flex-wrap justify-content-center">
         {filteredMedicines.map(renderItem)}
       </div>
     </div>

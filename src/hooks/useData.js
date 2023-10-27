@@ -5,6 +5,7 @@ export const DataContext = React.createContext({});
 export const DataProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [cart, setCart] = useState([]);
+  const [order, setOrder] = useState([]);
 
   const handleUser = useCallback(
     (payload) => {
@@ -23,6 +24,8 @@ export const DataProvider = ({ children }) => {
     handleUser,
     cart,
     setCart,
+    order,
+    setOrder,
   };
 
   return (

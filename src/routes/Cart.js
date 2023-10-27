@@ -1,9 +1,11 @@
 import React from "react";
 import { Button, Table } from "react-bootstrap";
 import { useData } from "../hooks/useData";
+import { Link, useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cart, setCart } = useData();
+  const { cart, setCart, setOrder } = useData();
+  const navigate = useNavigate();
 
   // const fetchCarts = async () => {
   //   const result = await cart.getCarts();
@@ -33,9 +35,28 @@ const Cart = () => {
   //   fetchCarts();
   // }, []);
 
+  const calculateTotalPrice = () => {
+    return cart.reduce((total, item) => {
+      return total + item.price * item.quantity;
+    }, 0);
+  };
+
+  const calculateTotalPricePerItem = (item) => {
+    if (item && item.price) {
+      return item.price * item.quantity;
+    }
+    return 0;
+  };
+
+  const handleOrderCOnfirm = () => {
+    setOrder(cart);
+    navigate("/OrderConfirmed");
+    setCart([]);
+  };
+
   return (
     <div style={{ marginRight: "5rem", marginLeft: "5rem" }}>
-      <h2>Cart</h2>
+      <h2 style={{ padding: "30px" }}>Cart</h2>
 
       <Table striped bordered hover>
         <thead>
@@ -43,7 +64,8 @@ const Cart = () => {
             <th>Medicine Name</th>
             <th>Price</th>
             <th>Quantity</th>
-            <th>Actions</th>
+            <th>Total</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -52,6 +74,7 @@ const Cart = () => {
               <td>{item.name}</td>
               <td>{item.price}</td>
               <td>{item.quantity}</td>
+              <td>{calculateTotalPricePerItem(item)}</td>
               <td>
                 <Button
                   variant="danger"
@@ -63,7 +86,30 @@ const Cart = () => {
             </tr>
           ))}
         </tbody>
+        <tfoot>
+          <tr>
+            <td
+              colSpan="4"
+              style={{ textAlign: "left", fontWeight: "bold", color: "green" }}
+            >
+              Total Price: {calculateTotalPrice()}
+            </td>
+          </tr>
+        </tfoot>
       </Table>
+      <div className="d-flex flex-column align-items-center justify-content-center">
+        <Button
+          onClick={handleOrderCOnfirm}
+          className="btn btn-success mb-3 w-50"
+        >
+          Confirm Order
+        </Button>
+      </div>
+      <div className="d-flex flex-column align-items-center justify-content-center">
+        <Link to="/" className="btn btn-info mb-3 w-50">
+          Continue Shopping
+        </Link>
+      </div>
     </div>
   );
 };
